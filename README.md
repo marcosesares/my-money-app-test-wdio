@@ -1,1 +1,1 @@
-# app-deel-training-test
+# my-money-app-test webdriverio with mocha
