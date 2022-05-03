@@ -1,0 +1,27 @@
+{
+    "name": "webdriverio-tests",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+        "@babel/cli": "^7.17.6",
+        "@babel/core": "^7.17.9",
+        "@babel/preset-env": "^7.16.11",
+        "@babel/register": "^7.17.7",
+        "@faker-js/faker": "^6.1.2",
+        "@wdio/allure-reporter": "^7.19.1",
+        "@wdio/cli": "^7.19.3",
+        "@wdio/local-runner": "^7.19.3",
+        "@wdio/mocha-framework": "^7.19.3",
+        "chromedriver": "^100.0.0",
+        "dotenv": "^16.0.0",
+        "wdio-chromedriver-service": "^7.3.2",
+        "wdio-geckodriver-service": "^2.1.1",
+        "wdio-wait-for": "^2.2.5",
+        "winston": "^3.7.2"
+    },
+    "scripts": {
+        "wdio": "npx wdio wdio.conf.js",
+        "dev:wdio": "npx wdio core/config/wdio.dev.conf.js",
+        "repl": "wdio repl chrome"
+    }
+}
