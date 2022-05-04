@@ -3,6 +3,29 @@ import { ValidationsHelper } from "./validations-helper";
 import { WaitHelper } from "./wait-helper";
 
 export class ExpectationHelper {
+  /**
+   * Verify that value is equal to other value
+   * @param target
+   * @param actualValue
+   * @param expectedValue
+   */
+  static async verifyNumberValueEqualTo(target, actualValue, expectedValue) {
+    const message = ValidationsHelper.getFieldTextEqualsToValidation(
+      target.name,
+      String(expectedValue)
+    );
+    StepLogger.subVerification(message);
+    try {
+      await expect(actualValue).toEqual(expectedValue, message);
+    } catch (error) {
+      await StepLogger.logError(
+        "EXPECT",
+        `Could not achieve expectation [${message}].`
+      );
+      throw error;
+    }
+  }
+
   static async verifyElementTextContains(
     targetElement,
     elementName,

@@ -1,4 +1,5 @@
 import { ElementHelper } from "../../../core/helper/element-helper";
+import { ExpectationHelper } from "../../../core/helper/expectation-helper";
 import { EndpointHelper } from "../../../core/misc-utils/endpoint-helper";
 import BasePageHelper from "../base-page.helper";
 import { CommonPageHelper } from "../common/common-page.helper";
@@ -22,6 +23,13 @@ export class DashboardPageHelper extends BasePageHelper {
    */
   static async verifyUserNameLabelDisplayedStatus() {
     await CommonPageHelper.verifyUserNameLabelDisplayedStatus();
+  }
+
+  static async verifyDashboardLabels() {
+    await DashboardPageHelper.verifyTotalCreditsLabelText();
+    await DashboardPageHelper.verifyTotalDebitsLabelText();
+    await DashboardPageHelper.verifyConsolidatedLabelText();
+    await DashboardPageHelper.verifyConsolidatedValue();
   }
 
   /**
