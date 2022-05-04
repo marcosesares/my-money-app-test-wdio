@@ -14,8 +14,7 @@ export class CoreConstants {
     tenMinutes: 600000,
   };
   static DEFAULT_TIMEOUT = CoreConstants.TIMEOUTS.xl;
-  static NUMBER_ONE = 1;
-  static NUMBER_MINUS_ONE = -1;
-  static NUMBER_THOUSAND = 1000;
-  static RATE_FREQUENCY = "Weekly";
+  static INITIAL_DATE = "1970-01-01T00:00:00.000Z";
+  static END_DATE = "2022-01-01T00:00:00.000Z";
+  static PASSWORD_REGEX = "aZ?#@*****###";
 }

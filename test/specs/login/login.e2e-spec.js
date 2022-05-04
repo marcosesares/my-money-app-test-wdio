@@ -2,7 +2,7 @@ import { StepLogger } from "../../../core/config/logger/step-logger";
 import { CommonPageHelper } from "../../page-objects/common/common-page.helper";
 import { LoginPageHelper } from "../../page-objects/login-page/login-page.helper";
 import { CredentialsHelper } from "../../../core/misc-utils/credentials-helper";
-describe("My Money App login", () => {
+describe("My Money App", () => {
   const mcesar = CredentialsHelper.mcesar;
   context("Login", async () => {
     before(async () => {

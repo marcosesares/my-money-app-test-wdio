@@ -1,28 +1,26 @@
 import BasePageHelper from "../base-page.helper";
 import { SignUpPage } from "./signup-page.po";
 import { LoginPageHelper } from "../login-page/login-page.helper";
-import { StepLogger } from "../../../core/config/logger/step-logger";
 import { EndpointHelper } from "../../../core/misc-utils/endpoint-helper";
+import { ElementHelper } from "../../../core/helper/element-helper";
+import { SignUpPageConstant } from "./signup-page.constants";
+
+const {
+  attributes: { labels },
+} = SignUpPageConstant;
 
 export class SignUpPageHelper extends BasePageHelper {
-  static _instance;
-
-  constructor() {
-    super();
-  }
-
-  static getInstance() {
-    return this._instance || (this._instance = new this());
-  }
-
   /**
    * Enter Name, Email, Password, ConfirmPassword and click 'Register' button.
    * @param user
    */
   static async fillSignUpFormAndClickRegisterButton(user) {
     await this.fillSignUpForm(user);
-    StepLogger.subStep("Click the Register Button.");
-    await SignUpPage.form.register.clickButton();
+    await SignUpPageHelper.clickTheRegisterButton();
+  }
+
+  static async clickTheRegisterButton() {
+    await ElementHelper.actionClick(SignUpPage.form.register, labels.register);
   }
 
   /**
@@ -30,13 +28,29 @@ export class SignUpPageHelper extends BasePageHelper {
    * @param user
    */
   static async fillSignUpForm(user) {
-    StepLogger.subStep("Click the New User? Register here! Link.");
-    await SignUpPage.form.signUpLink.clickButton();
+    await SignUpPageHelper.clickTheRegisterHereLink();
     await LoginPageHelper.fillLoginForm(user);
-    StepLogger.subStep("Type the user name.");
-    await SignUpPage.form.name.sendKeys(user.name);
-    StepLogger.subStep("Type the user confirmation password.");
-    await SignUpPage.form.confirmPassword.sendKeys(user.password);
+    await SignUpPageHelper.setTheUserName(user);
+    await SignUpPageHelper.setTheConfirmationPassword(user);
+  }
+
+  static async setTheConfirmationPassword(user) {
+    await ElementHelper.setValue(
+      SignUpPage.form.confirmPassword,
+      labels.confirmPassword,
+      user.password
+    );
+  }
+
+  static async setTheUserName(user) {
+    await ElementHelper.setValue(SignUpPage.form.name, labels.name, user.name);
+  }
+
+  static async clickTheRegisterHereLink() {
+    await ElementHelper.actionClick(
+      SignUpPage.form.signUpLink,
+      labels.signUpLink
+    );
   }
 
   url() {
