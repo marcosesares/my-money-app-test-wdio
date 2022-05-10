@@ -36,6 +36,10 @@ export class ValidationsHelper {
     return `Hover over the '${name}'`;
   }
 
+  static getScrollAction(name) {
+    return `Scroll into the '${name}'`;
+  }
+
   static getClickAction(name) {
     return `Click the '${name}'`;
   }

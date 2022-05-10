@@ -88,6 +88,22 @@ export class WaitHelper {
     }
   }
 
+  static async waitForElementToExist(
+    targetElement,
+    timeout = DEFAULT_TIMEOUT,
+    message = "Element should exist"
+  ) {
+    try {
+      await targetElement.waitForExist({ timeout, message });
+    } catch (error) {
+      await StepLogger.logError(
+        "WAIT",
+        `Waiting ${timeout}ms for awaited state: ${message}.`
+      );
+      throw error;
+    }
+  }
+
   static async waitForElementOptionallyPresent(
     targetElement,
     timeout = TIMEOUTS.s

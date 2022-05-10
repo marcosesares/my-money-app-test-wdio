@@ -96,6 +96,13 @@ export class ElementHelper {
     await targetElement.moveTo();
   }
 
+  static async scrollIntoView(targetElement, elementName) {
+    let message = ValidationsHelper.getScrollAction(elementName);
+    StepLogger.subStep(message);
+    await WaitHelper.waitForElementToExist(targetElement);
+    await targetElement.scrollIntoView();
+  }
+
   static async actionClick(targetElement, elementName) {
     let message = ValidationsHelper.getClickAction(elementName);
     StepLogger.subStep(message);
